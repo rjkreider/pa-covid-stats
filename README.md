@@ -14,7 +14,7 @@ Deaths: 16
 Mortality(%): 0.95
 Counties Reporting: 48
 Counties Positive: 48
-Counties Positive Affected(%): 100.0
+Counties Positive Affected(%): 71.64
 Counties Deaths: 10
 Counties Deaths(%): 20.83
 ```
