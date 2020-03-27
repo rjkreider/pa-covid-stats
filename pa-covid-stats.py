@@ -15,8 +15,6 @@ df = tables[1]
 totalCounties = 67
 
 print("Pennsylvania Data ({})".format(lastupdated))
-# Counties with cases
-#print(df[df.Cases > 0])
 
 deathsTotal = int(df["Deaths"].sum())
 casesTotal  = int(df["Cases"].sum())
@@ -28,4 +26,11 @@ reportingDeathsObj = df.apply(lambda x: True if x['Deaths'] > 0 else False, axis
 reportingDeaths = len(reportingDeathsObj[reportingDeathsObj == True].index)
 reportingDeathsPct = round((reportingDeaths / reportingTotal) * 100,2)
 
-print("Cases: {}\nDeaths: {}\nMortality(%): {}\nCounties Reporting: {}\nCounties Positive: {}\nCounties Positive Affected(%): {}\nCounties Deaths: {}\nCounties Deaths(%): {}".format(casesTotal,deathsTotal,mortalityPercent,reportingTotal,reportingCases.count(),reportingCasesPct,reportingDeaths,reportingDeathsPct))
+print("Total Cases: {}".format(casesTotal))
+print("Total Deaths: {}".format(deathsTotal))
+print("Mortality Rate(%): {}".format(mortalityPercent))
+print("Counties Reporting Cases: {}".format(reportingCases.count()))
+print("Counties Reporting Cases(%): {}".format(reportingCasesPct))
+print("Counties Reporting Deaths: {}".format(reportingDeaths))
+print("Counties Reporting Deaths(% of counties reporting cases): {}".format(reportingDeathsPct))
+
