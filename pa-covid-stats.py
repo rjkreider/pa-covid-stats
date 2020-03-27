@@ -12,6 +12,8 @@ lastupdated = stats.text[stats.text.find('last'):]
 tables = pd.read_html(html_content, header=0)
 df = tables[1]
 
+totalCounties = 67
+
 print("Pennsylvania Data ({})".format(lastupdated))
 # Counties with cases
 #print(df[df.Cases > 0])
@@ -20,8 +22,8 @@ deathsTotal = int(df["Deaths"].sum())
 casesTotal  = int(df["Cases"].sum())
 mortalityPercent = round((deathsTotal / casesTotal) * 100,2)
 reportingTotal = int(df["County"].count())
-reportingCases = df["Cases"] >50
-reportingCasesPct = round((reportingCases.count() / reportingTotal) * 100,2)
+reportingCases = df["Cases"]
+reportingCasesPct = round((reportingCases.count() / totalCounties) * 100,2)
 reportingDeathsObj = df.apply(lambda x: True if x['Deaths'] > 0 else False, axis=1)
 reportingDeaths = len(reportingDeathsObj[reportingDeathsObj == True].index)
 reportingDeathsPct = round((reportingDeaths / reportingTotal) * 100,2)
