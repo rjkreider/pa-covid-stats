@@ -29,10 +29,10 @@ totalCounties = 67
 print("Pennsylvania Data ({})".format(updatecheck))
 
 deathsTotal = int(df["Deaths"].sum())
-casesTotal  = int(df["Cases"].sum())
+casesTotal  = int(df["Number of Cases"].sum())
 mortalityPercent = round((deathsTotal / casesTotal) * 100,2)
 reportingTotal = int(df["County"].count())
-reportingCases = df["Cases"]
+reportingCases = df["Number of Cases"]
 reportingCasesPct = round((reportingCases.count() / totalCounties) * 100,2)
 reportingDeathsObj = df.apply(lambda x: True if x['Deaths'] > 0 else False, axis=1)
 reportingDeaths = len(reportingDeathsObj[reportingDeathsObj == True].index)
