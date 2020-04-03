@@ -6,6 +6,22 @@ import re
 import smtplib
 from email.message import EmailMessage
 
+# Add some notification stuff here...
+
+def sendNotification(output):
+        msg = EmailMessage()
+        msg.set_content(output)
+        msg['Subject'] = f'PA COVID-19 Update'
+        msg['From'] = f'PA-COVID-STATS'
+        msg['To'] = f'email@email.com, email2@email.com'
+
+        s = smtplib.SMTP('localhost')
+        s.send_message(msg)
+        s.quit()
+        print(f'Email notification sent!')
+
+
+
 # Uncomment this and look at the sendNotification function to configure email notification.  Useful if you run this from cron
 sendEmailNotifyOnUpdate=False
 
@@ -68,20 +84,3 @@ if newStatsAvailable:
 f=open(lastupdatedfile,"w")
 f.write(updatecheck)
 f.close()
-
-
-
-# Add some notification stuff here...
-
-def sendNotification(output):
-        msg = EmailMessage()
-        msg.set_content(output)
-        msg['Subject'] = f'PA COVID-19 Update'
-        msg['From'] = f'PA-COVID-STATS'
-        msg['To'] = f'email@email.com, email2@email.com'
-
-        s = smtplib.SMTP('localhost')
-        s.send_message(msg)
-        s.quit()
-        print(f'Email notification sent!')
-
